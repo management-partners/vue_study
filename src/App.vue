@@ -2,29 +2,29 @@
 <div id="app">
     <ul>
         <li>
-            <router-link to="/">Home</router-link> | 
-            <router-link to="/communication">Communication</router-link> | 
-            <router-link to="/quote">Quote</router-link> | 
-            <router-link to="/dynamic">Dynamic Component</router-link> | 
-            <router-link to="/quotes">Quote Procces</router-link>
+            <router-link to="/">Home</router-link>|
+            <router-link to="/communication">Communication</router-link>|
+            <router-link to="/quote">Quote</router-link>|
+            <router-link to="/dynamic">Dynamic Component</router-link>|
+            <router-link to="/quotes">Quote Procces</router-link>|
+            <router-link to="/directive">Directive</router-link>
         </li>
     </ul>
     <div class="my-container">
         <router-view></router-view>
     </div>
-
 </div>
 </template>
 
 <script>
 export default {
-    name: 'App',
+    name: "App",
     data() {
         return {
-            msg: 'Main Menu'
-        }
-    }
-}
+            msg: "Main Menu",
+        };
+    },
+};
 </script>
 
 <style lang="scss">
@@ -43,12 +43,11 @@ body {
 }
 
 #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
     margin-top: 10px;
-
 }
 
 h1,
@@ -62,7 +61,6 @@ ul {
     list-style-type: none;
     padding: 0;
     text-align: center;
-
 }
 
 li {
