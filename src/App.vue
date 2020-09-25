@@ -7,7 +7,9 @@
             <router-link to="/quote">Quote</router-link>|
             <router-link to="/dynamic">Dynamic Component</router-link>|
             <router-link to="/quotes">Quote Procces</router-link>|
-            <router-link to="/directive">Directive</router-link>
+            <router-link to="/directive">Directive</router-link> |
+            <router-link to="/filter">Filter anh mixins</router-link> |
+            <router-link to="/animation">Animation</router-link>
         </li>
     </ul>
     <div class="my-container">

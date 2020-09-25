@@ -11,6 +11,8 @@ import Quote from './Slot/Quote'
 import Dynamic from './DynmicComponent/Dynamic'
 import QuoteProccess from './Quote/index'
 import Directive from './Directive'
+import Filter from './Filter&Mixins'
+import Animation from './Animation'
 
 Vue.use(VueRouter)
 
@@ -26,6 +28,8 @@ const router = new VueRouter({
         { path: '/dynamic', component: Dynamic },
         { path: '/quotes', component: QuoteProccess },
         { path: '/directive', component: Directive },
+        { path: '/filter', component: Filter },
+        { path: '/animation', component: Animation },
     ],
     mode: 'history'
 })
@@ -73,6 +77,11 @@ Vue.directive('high-light-parameter-delayed', {
 
     }
 });
+// global filter
+Vue.filter('toUppercase', function(value) {
+    return value.toUpperCase();
+})
+
 new Vue({
     el: '#app',
     render: h => h(App),
