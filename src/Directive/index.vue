@@ -14,8 +14,13 @@
             <p v-high-light-parameter:background="'red'" v-text="'Global directive with parameter Some text'"></p>
             <p v-high-light-parameter-delayed:background.delayed="'red'" v-text="'Global directive have to delay Some text'"></p>
             <hr />
-            <p v-local-high-light:background.blink="'green'" v-html="'<strong>Some text</strong>'"></p>
-            <p v-html="'<strong>Some text</strong>'"></p>
+            <p v-local-high-light:background.blink="'green'" v-html="'<strong>Local directive Some text</strong>'"></p>
+            <p v-local-high-light-paramert:background.blink="{
+            mainColor: 'yellow',
+            secondColor: 'Orange',
+          }" v-html="
+            '<strong>Local directive have to parameter some text</strong>'
+          "></p>
         </div>
     </div>
 </div>
@@ -37,6 +42,39 @@ export default {
                 if (binding.modifiers["blink"]) {
                     let mainColor = binding.value;
                     let secondColor = "blue";
+                    let currentColor = mainColor;
+                    setTimeout(() => {
+                        setInterval(() => {
+                            currentColor == secondColor ?
+                                (currentColor = mainColor) :
+                                (currentColor = secondColor);
+                            if (binding.arg == "background") {
+                                el.style.backgroundColor = currentColor;
+                            } else {
+                                el.style.backgroundColor = currentColor;
+                            }
+                        }, 1000);
+                    }, delay);
+                } else {
+                    setTimeout(() => {
+                        if (binding.arg == "background") {
+                            el.style.backgroundColor = currentColor;
+                        } else {
+                            el.style.backgroundColor = currentColor;
+                        }
+                    }, delay);
+                }
+            },
+        },
+        LocalHighLightParamert: {
+            bind(el, binding, vnode) {
+                var delay = 0;
+                if (binding.modifiers["delayed"]) {
+                    delay = 300;
+                }
+                if (binding.modifiers["blink"]) {
+                    let mainColor = binding.value.mainColor;
+                    let secondColor = binding.value.secondColor;
                     let currentColor = mainColor;
                     setTimeout(() => {
                         setInterval(() => {
