@@ -40,6 +40,28 @@
             </transition>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary" @click="load = !load">Load Or Remove Element</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><br>
+        <transition
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+            @enter-cancelled="enterCanceled"
+            
+            @before-leave="beforeLeave"
+            @leave="leave"
+            @after-leave="afterLeave"
+            @leave-cancelled="leaveCancel"
+            :css="false">
+            <div style="width: 100px; height: 40px; background-color: green; border-radius:10px;" v-if="load"></div>
+        </transition>
+        </div>
+    </div>
 </div>
 </template>
 
@@ -48,10 +70,49 @@ export default {
     name: "Animation",
     data() {
         return {
-            fade: true,
-            slide: true,
-            apear: true,
+            fade: false,
+            slide: false,
+            apear: false,
+            load: false,
+            elementWidth: 100
         };
+    },
+    methods: {
+       beforeEnter(el){
+           this.elementWidth = 100;
+           el.style.width = this.elementWidth + 'px';
+       },
+       enter(el, done){
+           let round = 1;
+           const interVal = setInterval(()=>{
+               el.style.width = (this.elementWidth + round * 10 ) + 'px';
+               round ++;
+               if(round > 100){
+                   clearInterval(interVal);
+                   this.currentWidth = this.width;
+                   done();
+               }
+           }, 20);
+       },
+       afterEnter(){},
+       enterCanceled(){},
+       beforeLeave(el){
+           this.elementWidth = 800;
+           el.style.width = this.elementWidth + 'px';
+       },
+       leave(el, done){
+           let round = 1;
+           const interVal = setInterval(()=>{
+               el.style.width = (this.elementWidth - round * 10 ) + 'px';
+               round ++;
+               if(round > 100){
+                   clearInterval(interVal);
+                   done();
+               }
+           }, 20);
+       },
+       afterLeave(){},
+       leaveCancel(){}
     },
 };
 </script>

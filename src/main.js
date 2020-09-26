@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import 'animate.css/animate.min.css'
 
 import Communication from './Communication/Communication'
 import Home from './Home'
