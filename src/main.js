@@ -32,7 +32,8 @@ const router = new VueRouter({
         { path: "/directive", component: Directive },
         { path: "/filter", component: Filter },
         { path: "/animation", component: Animation },
-        { path: "/http", component: Http }
+        { path: "/http", component: Http },
+        { path: "*", component: Home }
     ],
     mode: "history"
 });
