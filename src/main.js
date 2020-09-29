@@ -15,6 +15,9 @@ import Directive from "./Directive";
 import Filter from "./Filter&Mixins";
 import Animation from "./Animation";
 import Http from "./Http";
+import StoreStateManagement from "./Store";
+import Portfolio from "./Store/components/Portfolio";
+import Stocks from "./Store/components/Stock";
 
 Vue.use(VueRouter);
 
@@ -33,6 +36,16 @@ const router = new VueRouter({
         { path: "/filter", component: Filter },
         { path: "/animation", component: Animation },
         { path: "/http", component: Http },
+        {
+            path: "/store",
+            components: {
+                default: StoreStateManagement
+            },
+            children: [
+                { path: "/portfolio", component: Portfolio },
+                { path: "/stock", component: Stocks }
+            ]
+        },
         { path: "*", component: Home }
     ],
     mode: "history"
