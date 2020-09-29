@@ -5,11 +5,14 @@
             <h2>Http</h2>
             <div class="form-group">
                 <label for="username">User Name</label>
-                <input type="text" class="form-control" v-model="user.username" />
+                <input type="text" class="form-control" v-model="user.userName" />
             </div>
             <div class="form-group">
                 <label for=" email">Email</label>
                 <input type="email" class="form-control" v-model="user.email" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" v-model="node" />
             </div>
             <div class="form-group text-center">
                 <button class=" btn btn-primary" @click="submit">Submit</button>
@@ -25,8 +28,7 @@
             <div class="form-group">
                 <ul class="list-group">
                     <li class="list-group-item" v-for="(u, index) in users" :key="index">
-                        <label for="username"> {{ u.username }}</label> ===
-                        <label for="email"> {{ u.email }}</label>
+                        {{ u.userName }}- {{ u.email }}
                     </li>
                 </ul>
             </div>
@@ -41,17 +43,48 @@ export default {
     data() {
         return {
             user: {
-                username: "",
-                email: "",
-                link: "/data.json",
-                resource: {}
+                userName: "",
+                email: ""
             },
-            users: []
+            users: [],
+            resource: {},
+            node: "data"
         };
     },
     methods: {
-        submit() {},
-        getAll() {}
+        submit() {
+            this.resource.saveAlt(this.user);
+            this.user.userName = "";
+            this.user.email = "";
+        },
+        getAll() {
+            this.resource
+                .getData({
+                    node: this.node
+                })
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    const resultArray = [];
+                    for (let key in data) {
+                        resultArray.push(data[key]);
+                    }
+                    this.users = resultArray;
+                });
+        }
+    },
+    created() {
+        const customActions = {
+            saveAlt: {
+                method: "POST",
+                url: this.node + ".json"
+            },
+            getData: {
+                method: "GET"
+            }
+        };
+        this.resource = this.$resource("{node}.json", {}, customActions);
     }
 };
 </script>

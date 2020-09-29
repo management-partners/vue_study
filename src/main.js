@@ -1,4 +1,5 @@
 import Vue from "vue";
+import VueResource from "vue-resource";
 import App from "./App.vue";
 import VueRouter from "vue-router";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -81,6 +82,19 @@ Vue.directive("high-light-parameter-delayed", {
 // global filter
 Vue.filter("toUppercase", function(value) {
     return value.toUpperCase();
+});
+
+Vue.use(VueResource);
+Vue.http.options.root = "https://vue-firebase-4fa43.firebaseio.com/";
+Vue.http.interceptors.push((request, next) => {
+    if (request.method == "POST") {
+        request.method = "PUT";
+    }
+    next(response => {
+        response.json = () => {
+            return { messages: response.body };
+        };
+    });
 });
 
 new Vue({
