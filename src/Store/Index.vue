@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
             <h2>Store state management</h2>
-            <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <nav class="navbar navbar-light" style="background-color: #e3f2fd">
                 <ul class="nav justify-content-start">
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" @click="selectedComponent = 'home'">Stock Trader</a>
@@ -20,7 +20,7 @@
                         <a class="nav-link active" href="#">End Day</a>
                     </li>
                     <li class="dropdown nav-item" :class="{ open: isDropdownOpen }" @click="isDropdownOpen = !isDropdownOpen">
-                        <a href="javascript:void(0)" class="dropdown-toggle  nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Save & Load <span class="caret"></span></a>
+                        <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Save & Load <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
                                 <a href="javascript:void(0)" class="nav-link">Save Data</a>
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="row wrap-content">
-        <transition>
+        <transition name="fade" mode="out-in">
             <component :is="selectedComponent"></component>
         </transition>
     </div>
@@ -54,14 +54,14 @@ export default {
     data() {
         return {
             selectedComponent: "home",
-            isDropdownOpen: false
+            isDropdownOpen: false,
         };
     },
     components: {
         Home,
         Portfolio,
-        Stock
-    }
+        Stock,
+    },
 };
 </script>
 
