@@ -11,7 +11,7 @@
             <router-link to="/filter">Filter anh mixins</router-link> |
             <router-link to="/animation">Animation</router-link> |
             <router-link to="/http">Http</router-link> |
-            <router-link to="/user">Router</router-link> |
+            <router-link to="/router">Router</router-link> |
             <router-link to="/store">Store State Management</router-link>
         </li>
     </ul>

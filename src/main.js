@@ -15,7 +15,7 @@ import Directive from "./Directive";
 import Filter from "./Filter&Mixins";
 import Animation from "./Animation";
 import Http from "./Http";
-import { userRoute, userDetailRoute, userEditRoute, userStartRoute } from "./Router/Router";
+import { homeRoute } from "./Router/Router";
 import StoreStateManagement from "./Store";
 
 Vue.use(VueRouter);
@@ -38,7 +38,7 @@ const router = new VueRouter({
         // { path: "/route", component: Router },
         { path: "/store", component: StoreStateManagement },
         { path: "*", component: Home },
-        userRoute, userDetailRoute, userEditRoute, userStartRoute
+        homeRoute
     ],
     mode: "history"
 });
