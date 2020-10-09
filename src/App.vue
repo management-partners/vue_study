@@ -12,7 +12,8 @@
             <router-link to="/animation">Animation</router-link> |
             <router-link to="/http">Http</router-link> |
             <router-link to="/router">Router</router-link> |
-            <router-link to="/store">Store State Management</router-link>
+            <!-- <router-link to="/store">Store State Management</router-link> -->
+            <router-link to="/vuex">Vuex</router-link>
         </li>
     </ul>
     <div class="my-container">

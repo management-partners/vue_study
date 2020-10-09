@@ -1,24 +1,27 @@
-import Vue from "vue";
-import VueResource from "vue-resource";
-import App from "./App.vue";
-import VueRouter from "vue-router";
-import "bootstrap/dist/js/bootstrap.min.js";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "animate.css/animate.min.css";
+import Vue from "vue"
+import VueResource from "vue-resource"
+import App from "./App.vue"
+import VueRouter from "vue-router"
+import "bootstrap/dist/js/bootstrap.min.js"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "animate.css/animate.min.css"
 
-import Communication from "./Communication/Communication";
-import Home from "./Home";
-import Quote from "./Slot/Quote";
-import Dynamic from "./DynmicComponent/Dynamic";
-import QuoteProccess from "./Quote/index";
-import Directive from "./Directive";
-import Filter from "./Filter&Mixins";
-import Animation from "./Animation";
-import Http from "./Http";
-import { homeRoute } from "./Router/Router";
-import StoreStateManagement from "./Store";
+import Communication from "./Communication/Communication"
+import Home from "./Home"
+import Quote from "./Slot/Quote"
+import Dynamic from "./DynmicComponent/Dynamic"
+import QuoteProccess from "./Quote/index"
+import Directive from "./Directive"
+import Filter from "./Filter&Mixins"
+import Animation from "./Animation"
+import Http from "./Http"
+import { homeRoute } from "./Router/Router"
+import StoreStateManagement from "./Store"
+import Vuex from './Vuex/Index'
 
 Vue.use(VueRouter);
+
+import { store }  from './Vuex/store/store'
 
 import jQuery from "jquery";
 window.jQuery = jQuery;
@@ -37,8 +40,10 @@ const router = new VueRouter({
         { path: "/http", component: Http },
         // { path: "/route", component: Router },
         { path: "/store", component: StoreStateManagement },
+        
+        homeRoute,
+        { path: "/vuex", component: Vuex },
         { path: "*", component: Home },
-        homeRoute
     ],
     mode: "history"
 });
@@ -106,5 +111,6 @@ Vue.http.interceptors.push((request, next) => {
 new Vue({
     el: "#app",
     render: h => h(App),
-    router
+    router,
+    store
 });
